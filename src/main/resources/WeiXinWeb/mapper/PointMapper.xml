@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WeiXinWeb.mapper.PointMapper">
+
+    <!--    两个数据的名称不一样 不能自动封装 （赋值）-->
+    <!--    用resultMap-->
+    <resultMap id="PointMap" type="WeiXinWeb.pojo.Point">
+<!--        <result column="image_id" property="imageId"></result>-->
+    </resultMap>
+
+    <!--    查询所有点位-->
+    <select id="selectAllPoints" resultType="WeiXinWeb.pojo.Point">
+        select id, name, latitude, longitude, url
+        from point;
+    </select>
+
+    <!--    通过名字查询点位-->
+    <select id="selectPointByName" resultType="WeiXinWeb.pojo.Point">
+        select id, name, latitude, longitude, url
+        from point
+        where name like concat('%',#{name},'%');
+    </select>
+
+    <select id="selectPointBySingle" resultMap="PointMap">
+        select id, name, latitude, longitude, url
+        from point
+        <where>
+            <choose>
+                <when test="name != null">
+                    name like concat('%',#{name},'%')
+                </when>
+                <when test="latitude != null and latitude !=''">
+                    latitude = #{latitude}
+                </when>
+                <when test="longitude != null and longitude !=''">
+                    longitude = #{longitude}
+                </when>
+                <when test="url != null and url !=''">
+                    url = #{url}
+                </when>
+            </choose>
+        </where>
+
+    </select>
+
+
+    <!--    通过多条件动态查询-->
+    <select id="selectPointByCondition" resultMap="PointMap">
+        select id, name,  latitude, longitude, url
+        from point
+        <where>
+            <if test="name != null and name !=''">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="latitude != null and latitude !=''">
+                and latitude = #{latitude}
+            </if>
+            <if test="longitude != null and longitude !=''">
+                and longitude = #{longitude}
+            </if>
+            <if test="url != null and url !=''">
+                and url = #{url}
+            </if>
+
+        </where>
+        ;
+    </select>
+
+    <!--    插入点-->
+    <insert id="addPoint">
+        insert into point (name, latitude, longitude)
+        values(#{name},#{latitude},#{longitude});
+    </insert>
+
+    <update id="updatePoint">
+        update point
+        <set>
+            <if test="latitude != null and latitude !=''">
+                latitude=#{latitude},
+            </if>
+
+            <if test="longitude != null and longitude !=''">
+                longitude=#{longitude},
+            </if>
+
+            <if test="url != null and url !=''">
+                url=#{url},
+            </if>
+        </set>
+        where name = #{name};
+
+    </update>
+
+    <delete id="deletePointByName">
+        delete
+        from point
+        where name = #{name};
+    </delete>
+</mapper>
