@@ -28,6 +28,8 @@ public class TipService {
         TipMapper tipMapper = sqlSession.getMapper(TipMapper.class);
 
         tipMapper.addTip(tip);
+        //提交事务
+        sqlSession.commit();
 
         sqlSession.close();
     }
