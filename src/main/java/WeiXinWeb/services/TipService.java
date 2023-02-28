@@ -1,8 +1,6 @@
 package WeiXinWeb.services;
 
-import WeiXinWeb.mapper.PointMapper;
 import WeiXinWeb.mapper.TipMapper;
-import WeiXinWeb.pojo.Point;
 import WeiXinWeb.pojo.Tip;
 import WeiXinWeb.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -22,6 +20,16 @@ public class TipService {
         sqlSession.close();
 
         return tips;
+    }
+
+    public void  addTip(Tip tip)
+    {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        TipMapper tipMapper = sqlSession.getMapper(TipMapper.class);
+
+        tipMapper.addTip(tip);
+
+        sqlSession.close();
     }
 
 

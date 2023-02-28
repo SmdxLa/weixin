@@ -140,7 +140,7 @@ public class PointServlet extends BaseServlet {
 
         if (req.getParameter("longitude")!=null) {
             double longitude = Double.parseDouble(req.getParameter("longitude")) ;
-            point.setLatitude(longitude);
+            point.setLongitude(longitude);
         }
 
         if(req.getParameter("url")!=null){

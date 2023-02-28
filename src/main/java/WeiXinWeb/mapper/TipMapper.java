@@ -7,4 +7,5 @@ import java.util.List;
 public interface TipMapper {
 
     List<Tip> selectAllTips();
+    void addTip(Tip tip);
 }

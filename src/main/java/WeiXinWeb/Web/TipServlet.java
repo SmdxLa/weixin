@@ -28,4 +28,34 @@ public class TipServlet extends BaseServlet{
 
         writer.print(userJson);
     }
+
+    public void addTip(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    {
+        req.setCharacterEncoding("utf-8");
+
+        Tip tip = getInfo(req, resp);
+
+        TipService.addTip(tip);
+
+        //一定要先设置编码 再获取Writer
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter writer = resp.getWriter();
+
+        writer.print("成功添加:" + tip.toString());
+    }
+
+
+
+    public Tip getInfo(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException
+    {
+        Tip tip = new Tip();
+
+        if((req.getParameter("tip"))!=null)
+        {
+            String tipMessage = req.getParameter("tipMessage");
+            tip.setTip(tipMessage);
+        }
+            return tip;
+    }
+
 }

@@ -5,9 +5,14 @@
 
 <mapper namespace="WeiXinWeb.mapper.TipMapper">
 
-
     <select id="selectAllTips" resultType="WeiXinWeb.pojo.Tip">
         select id, tip
         from tips;
     </select>
+
+    <insert id="addTip">
+        insert into tips (tip)
+        values(#{tipMessage});
+    </insert>
+
 </mapper>
