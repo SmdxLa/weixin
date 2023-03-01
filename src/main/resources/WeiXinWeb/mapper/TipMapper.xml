@@ -5,14 +5,20 @@
 
 <mapper namespace="WeiXinWeb.mapper.TipMapper">
 
+    <!--    两个数据的名称不一样 不能自动封装 （赋值）-->
+    <!--    用resultMap-->
+<!--    <resultMap id="TipMap" type="WeiXinWeb.pojo.Tip">-->
+<!--                <result column="tip" property="tip"></result>-->
+<!--    </resultMap>-->
+
     <select id="selectAllTips" resultType="WeiXinWeb.pojo.Tip">
         select id, tip
         from tips;
     </select>
 
     <insert id="addTip">
-        insert into tips (tip)
-        values(#{tipMessage});
+        insert into tips (id,tip)
+        values(#{id},#{tip});
     </insert>
 
 </mapper>

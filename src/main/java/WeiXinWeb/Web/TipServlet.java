@@ -50,9 +50,15 @@ public class TipServlet extends BaseServlet{
     {
         Tip tip = new Tip();
 
+        if((req.getParameter("id"))!=null)
+        {
+            int id = Integer.parseInt(req.getParameter("id"));
+            tip.setId(id);
+        }
+
         if((req.getParameter("tip"))!=null)
         {
-            String tipMessage = req.getParameter("tipMessage");
+            String tipMessage = req.getParameter("tip");
             tip.setTip(tipMessage);
         }
             return tip;

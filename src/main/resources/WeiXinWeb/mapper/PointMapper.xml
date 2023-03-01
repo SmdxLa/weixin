@@ -70,8 +70,8 @@
 
     <!--    插入点-->
     <insert id="addPoint">
-        insert into point (name, latitude, longitude)
-        values(#{name},#{latitude},#{longitude});
+        insert into point (name, latitude, longitude,url)
+        values(#{name},#{latitude},#{longitude},#{url});
     </insert>
 
     <update id="updatePoint">
