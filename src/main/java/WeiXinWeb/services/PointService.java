@@ -56,7 +56,7 @@ public class PointService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         PointMapper pointMapper = sqlSession.getMapper(PointMapper.class);
 
-        List<Point> points = pointMapper.selectPointByCondition(point);
+        List<Point> points = pointMapper.selectPointByConditions(point);
         sqlSession.close();
 
         return points;

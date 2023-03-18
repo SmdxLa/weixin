@@ -47,7 +47,7 @@
     </select>
 
     <!--    通过多条件动态查询-->
-    <select id="selectPointByCondition" resultMap="PointMap">
+    <select id="selectPointByConditions" resultMap="PointMap">
         select id, name,  latitude, longitude, url
         from point
         <where>

@@ -13,6 +13,10 @@ import java.lang.reflect.Method;
  */
 public class BaseServlet extends HttpServlet {
 
+    public static String imageBaseURL = "/usr/local/resources/image/";
+//    public static String BaseURL = "/usr/local/resources/image/";
+
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

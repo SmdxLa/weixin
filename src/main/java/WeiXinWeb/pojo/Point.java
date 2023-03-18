@@ -12,7 +12,6 @@ public class Point {
     private double latitude;
     @JSONField(ordinal = 4)
     private  double longitude;
-
     @JSONField(ordinal = 5)
     private String url;
 

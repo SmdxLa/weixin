@@ -10,7 +10,7 @@ public interface PointMapper {
     List<Point> selectAllPoints();
 
     //    动态查询
-    List<Point> selectPointByCondition(Point point);
+    List<Point> selectPointByConditions(Point point);
 
     List<Point> selectPointByName(String name);
 
@@ -23,9 +23,6 @@ public interface PointMapper {
 
 //    删除
     void deletePointByName(String name);
-
-
-
 
 
 }
