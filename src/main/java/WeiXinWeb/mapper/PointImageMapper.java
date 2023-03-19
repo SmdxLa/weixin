@@ -9,6 +9,6 @@ public interface PointImageMapper {
     //全部图片信息
     List<PointImage> selectAllPointImages();
 
-    PointImage selectPointImageByName(PointImage pointImage);
+    PointImage selectPointImageByName(String name);
 
 }

@@ -24,16 +24,16 @@ public class PointImageService {
         return  pointImages;
     }
 
-    public PointImage selectPointImageByName(PointImage pointImage)
+    public PointImage selectPointImageByName(String name)
     {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         PointImageMapper pointImagesMapper = sqlSession.getMapper(PointImageMapper.class);
 
-        PointImage Image = pointImagesMapper.selectPointImageByName(pointImage);
+        PointImage pointImageImage = pointImagesMapper.selectPointImageByName(name);
 
         sqlSession.close();
 
-        return Image;
+        return pointImageImage;
     }
 
 

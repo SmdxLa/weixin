@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class BaseServlet extends HttpServlet {
 
     public static String imageBaseURL = "/usr/local/resources/image/";
-//    public static String BaseURL = "/usr/local/resources/image/";
+    public static String localBaseURL = "F:\\Java_Code\\WeiXin\\src\\main\\resources\\image\\";
 
 
     @Override
