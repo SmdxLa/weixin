@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WeiXinWeb.mapper.PointImageMapper">
+
+    <!--    查询所有点位图片-->
+    <select id="selectAllPointImages" resultType="WeiXinWeb.pojo.PointImage">
+        select id, name, url
+        from point_image;
+    </select>
+
+    <select id="selectPointImageByName" resultType="WeiXinWeb.pojo.PointImage">
+        select id, name, url
+        from point_image
+        where name like concat('%',#{name},'%');
+    </select>
+
+</mapper>
