@@ -29,7 +29,11 @@
         from point
         <where>
             <choose>
-                <when test="name != null">
+<!--                此处因为point的id不为空，判断是否为null，也要判断是否为空-->
+                <when test="id != null and id !=''">
+                    id = #{id}
+                </when>
+                <when test="name != null and name !=''">
                     name like concat('%',#{name},'%')
                 </when>
                 <when test="latitude != null and latitude !=''">
@@ -51,6 +55,9 @@
         select id, name,  latitude, longitude, url
         from point
         <where>
+            <if test="id != null and id !=''">
+                and id = #{id}
+            </if>
             <if test="name != null and name !=''">
                 and name like concat('%',#{name},'%')
             </if>
@@ -70,13 +77,17 @@
 
     <!--    插入点-->
     <insert id="addPoint">
-        insert into point (name, latitude, longitude,url)
-        values(#{name},#{latitude},#{longitude},#{url});
+        insert into point (id, name, latitude, longitude,url)
+        values(#{id},#{name},#{latitude},#{longitude},#{url});
     </insert>
 
     <update id="updatePoint">
         update point
         <set>
+            <if test="name != null and name !=''">
+                name=#{name},
+            </if>
+
             <if test="latitude != null and latitude !=''">
                 latitude=#{latitude},
             </if>
@@ -89,7 +100,7 @@
                 url=#{url},
             </if>
         </set>
-        where name = #{name};
+        where id = #{id};
 
     </update>
 

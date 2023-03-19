@@ -48,7 +48,7 @@ public class PointServlet extends BaseServlet {
         writer.print(userJson);
     }
 
-        public void selectPointByCondition(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+        public void selectPointByConditions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         Point point = getInfo(req,resp);
 
@@ -126,6 +126,11 @@ public class PointServlet extends BaseServlet {
     public Point getInfo(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException
     {
         Point point = new Point();
+        if((req.getParameter("id"))!=null)
+        {
+            int id = Integer.parseInt(req.getParameter("id"));
+            point.setId(id);
+        }
 
         if((req.getParameter("name"))!=null)
         {

@@ -37,7 +37,7 @@ public class SQLtest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         PointMapper pointMapper = sqlSession.getMapper(PointMapper.class);
 
-        List<Point> points = pointMapper.selectPointByCondition(point);
+        List<Point> points = pointMapper.selectPointByConditions(point);
 
         System.out.println(points);
 
