@@ -61,8 +61,7 @@ public class Point {
     @Override
     public String toString() {
         return "Point{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", url='" + url + '\'' +

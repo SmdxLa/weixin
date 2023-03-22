@@ -12,10 +12,10 @@ import java.lang.reflect.Method;
  * 根据请求最后一段路径，进行方法分发
  */
 public class BaseServlet extends HttpServlet {
-
-    public static String imageBaseURL = "/usr/local/resources/image/";
-//    public static String BaseURL = "/usr/local/resources/image/";
-
+//服务器地址
+    public static String baseURL = "/usr/local/resources/image/";
+//本地资源调用地址
+//    public static String baseURL = "C:\\Users\\SmdxLa\\Desktop\\校园导览开发\\resources\\";
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
